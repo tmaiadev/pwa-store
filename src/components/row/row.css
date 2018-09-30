@@ -1,0 +1,5 @@
+.row {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-gap: 16px;
+}

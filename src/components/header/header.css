@@ -1,0 +1,51 @@
+.header {
+    display: block;
+    height: 64px;
+}
+
+.header-wrapper {
+    display: block;
+    width: 100%;
+    height: 64px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+}
+
+.header__content {
+    display: flex;
+}
+
+.header__logo {
+    display: block;
+    width: 58px;
+    height: 64px;
+}
+
+.header__separator {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+}
+
+.header__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0px 8px;
+    margin: 0px;
+    border: 0px;
+    background-color: transparent;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.header__btn--underline {
+    text-decoration: underline;
+}
+
+.header__btn-icon {
+    height: 20px;
+}

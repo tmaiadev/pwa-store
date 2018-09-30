@@ -1,0 +1,12 @@
+.footer {
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    line-height: 20px;
+    border-top: solid thin #CCC;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #0045FF;
+}
