@@ -6,7 +6,7 @@
 }
 
 .product-placeholder > * {
-    background-color: #D2D2D2;
+    background-color: #DEDEDE;
     animation: productPlaceholderGlow;
     animation-duration: 1s;
     animation-iteration-count: infinite;
