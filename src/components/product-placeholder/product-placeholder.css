@@ -1,0 +1,28 @@
+.product-placeholder {
+    display: grid;
+    width: 110px;
+    grid-gap: 8px;
+    grid-template-rows: 159px 40px 20px 20px;
+}
+
+.product-placeholder > * {
+    background-color: #D2D2D2;
+    animation: productPlaceholderGlow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    will-change: transform;
+}
+
+@keyframes productPlaceholderGlow {
+    0% {
+        opacity: .3;
+    }
+
+    50% {
+        opacity: .2;
+    }
+
+    100% {
+        opacity: .3;
+    }
+}
