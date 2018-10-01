@@ -1,3 +1,4 @@
 .app__content {
-  height: calc(100vh - 167px);
+  min-height: calc(100vh - 167px);
+  position: relative;
 }

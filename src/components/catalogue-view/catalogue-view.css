@@ -1,0 +1,18 @@
+.catalogue-view__filter-btn {
+    display: flex;
+    font-size: 14px;
+    border: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.catalogue-view__filter-btn__icon {
+    height: 15px;
+    margin-right: 8px;
+}
+
+@media (min-width: 1024px) {
+    .catalogue-view__filter-btn {
+        display: none;
+    }
+}

@@ -1,0 +1,26 @@
+.select {
+    position: relative;
+    white-space: nowrap;
+}
+
+.select__input {
+    appearance: none;
+    border: none;
+    border-bottom: solid thin #000;
+    background-color: transparent;
+    height: 30px;
+    width: 100px;
+    border-radius: 0px;
+    padding: 4px;
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+.select__arrow-down {
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
