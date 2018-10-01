@@ -29,3 +29,6 @@ $ yarn build
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). To dig deeper on the build process, just follow the link.
 
+## Setup
+
+After installing the dependencies, you must copy the file `_firebase-config.js` to `firebase-config.js`, then open it, and paste your Firebase configuration.
