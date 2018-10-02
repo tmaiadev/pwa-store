@@ -4,6 +4,7 @@ import Container from '../container/container';
 import Row from '../row/row';
 import Select from '../select/select';
 import ProductPlaceholder from '../product-placeholder/product-placeholder';
+import MobileFilters from '../mobile-filters/mobile-filters';
 import FUNNEL_ICON from './funnel.svg';
 import './catalogue-view.css';
 
@@ -44,7 +45,8 @@ class CatalogueView extends Component {
                     <Container>
                         <Row>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <button className="catalogue-view__filter-btn">
+                                <button className="catalogue-view__filter-btn"
+                                        onClick={this.openFilters.bind(this)}>
                                     <img src={FUNNEL_ICON}
                                          className="catalogue-view__filter-btn__icon"
                                          aria-hidden
@@ -76,6 +78,8 @@ class CatalogueView extends Component {
                         </main>
                     </div>
                 </Container>
+                <MobileFilters active={this.state.filtersOpen}
+                               onClose={this.closeFilters.bind(this)} />
             </div>
         )
     }
