@@ -1,0 +1,39 @@
+.filters {
+    box-sizing: border-box;
+    padding-right: 16px;
+}
+
+.filters__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.filters__price-range {
+    padding: 32px;
+}
+
+.filters__checkbox {
+    display: flex;
+    align-items: center;
+    padding: 4px 0px;
+    cursor: pointer;
+}
+
+.filters__checkbox__input {
+    appearance: none;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border: solid 1px #000;
+    background-color: #FFF;
+    border-radius: 4px;
+    outline: none;
+}
+
+.filters__checkbox__input:checked {
+    background-color: #000;
+    border: solid 2px #FFF;
+    box-shadow: 0px 0px 0px 1px #000;
+}

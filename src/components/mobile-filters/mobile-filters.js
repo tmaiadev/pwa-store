@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
+import Filters from '../filters/filters';
 import './mobile-filters.css';
 
 const MobileFilters = props => {
@@ -21,6 +22,7 @@ const MobileFilters = props => {
                                 aria-label="Fechar filtros"
                                 onClick={props.onClose.bind(this)}>&times;</button>
                     </div>
+                    <Filters onChange={props.onChange} />
                 </div>
             </div>
         </aside>

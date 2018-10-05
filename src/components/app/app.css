@@ -1,4 +1,5 @@
 .app__content {
   min-height: calc(100vh - 167px);
   position: relative;
+  user-select: none;
 }

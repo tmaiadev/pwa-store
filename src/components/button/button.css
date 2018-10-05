@@ -1,0 +1,8 @@
+.button {
+    font-size: 14px;
+    color: #FFF;
+    padding: 8px 16px;
+    margin: 0px;
+    cursor: pointer;
+    background-color: #000;
+}
