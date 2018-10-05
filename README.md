@@ -31,4 +31,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setup
 
-After installing the dependencies, you must make a copy of the file `_firebase-config.js`, located in src/, and rename it to `firebase-config.js`. Then open it, and paste your Firebase configuration.
+After installing the dependencies, you must rename `_.firebaserc` to `.firebaserc`, and `src/_firebase-config.js` to `src/firebase-config.js`, and edit those files with your firebase configuration.
