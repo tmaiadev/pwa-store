@@ -1,8 +1,17 @@
 .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
     color: #FFF;
     padding: 8px 16px;
     margin: 0px;
     cursor: pointer;
     background-color: #000;
+    border: 0px;
+}
+
+.button__icon {
+    height: 20px;
+    margin-right: 16px;
 }

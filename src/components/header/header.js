@@ -24,11 +24,12 @@ class Header extends Component {
                                      aria-hidden
                                      alt="Carrinho" />0
                             </button>
-                            <button className="header__btn header__btn--underline"
+                            {this.props.user === null ?
+                                null :<button className="header__btn header__btn--underline"
                                     onClick={() => this.props.user ?
                                         this.props.logout() : this.props.login()}>
                                 {this.props.user ? 'Sair' : 'Entrar'}
-                            </button>
+                            </button>}
                         </div>
                     </Container>
                 </div>
