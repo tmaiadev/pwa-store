@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
+import Link from 'react-router-dom/Link';
 import Container from '../container/container';
 import IMAGE_LOGO from './images/logo.png';
 import IMAGE_CART from './images/cart.svg';
@@ -12,9 +13,11 @@ class Header extends Component {
                 <div className="header-wrapper">
                     <Container>
                         <div className="header__content">
-                            <img src={IMAGE_LOGO}
-                                className="header__logo"
-                                alt="PWA Store" />
+                            <Link to="/">
+                                <img src={IMAGE_LOGO}
+                                    className="header__logo"
+                                    alt="PWA Store" />
+                            </Link>
                             <div className="header__separator" />
                             <button className="header__btn"
                                     title="Seu carrinho tem 0 ítems"

@@ -1,0 +1,45 @@
+.product {
+    display: grid;
+    width: 110px;
+    grid-gap: 4px;
+    grid-template-rows: 159px 60px 20px 20px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+}
+
+.product__image {
+    background-size: cover;
+    background-position: center center;
+}
+
+.product__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.product:hover .product__title {
+    text-decoration: underline;
+}
+
+.product__price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product__installments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+}
+
+@media (min-width: 768px) {
+    .product {
+        width: 200px;
+        grid-template-rows: 340px 60px 20px 20px;
+    }
+}

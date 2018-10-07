@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import AsyncComponent from '../async-component/async-component';
 import localforage from 'localforage';
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -9,17 +10,10 @@ import AuthModal from '../auth-modal/auth-modal';
 class App extends Component {
 	state = {
 		user: null,
-		catalogueView: null,
 		authModal: false
 	}
 
 	async componentDidMount() {
-		const catalogueView = (
-			await import('../catalogue-view/catalogue-view')
-		).default;
-		
-		this.setState({ catalogueView });
-
 		this.firebase = await import('../../firebase');
 		this.FIREBASE_GOOGLE_PROVIDER = new this.firebase.lib.auth.GoogleAuthProvider();
 		this.FIREBASE_FACEBOOK_PROVIDER = new this.firebase.lib.auth.FacebookAuthProvider();
@@ -99,7 +93,12 @@ class App extends Component {
 							login={this.openAuthModal.bind(this)}
 							logout={this.logout.bind(this)} />
 					<div className="app__content">
-						<Route path="/" component={this.state.catalogueView} />
+						<Route path="/"
+							   exact
+							   component={AsyncComponent(() => import('../catalogue-view/catalogue-view'))} />
+						<Route path="/:id"
+							   exact
+							   component={AsyncComponent(() => import('../product-view/product-view'), { user: this.state.user })} />
 					</div>
 					<Footer />
 					<AuthModal active={this.state.authModal}

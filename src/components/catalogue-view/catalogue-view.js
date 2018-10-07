@@ -8,6 +8,7 @@ import MobileFilters from '../mobile-filters/mobile-filters';
 import Filters from '../filters/filters';
 import FUNNEL_ICON from './funnel.svg';
 import './catalogue-view.css';
+import Product from '../product/product';
 
 const ORDERS_OPTIONS = [
     { value: 'NEW', label: 'Novidades' },
@@ -44,6 +45,75 @@ class CatalogueView extends Component {
         order: ORDERS_OPTIONS[0].value
     }
 
+    componentDidMount() {
+        this.fetchProducts();
+    }
+
+    fetchProducts() {
+        this.setState({
+            products: DEFAULT_PRODUCTS
+        }, async () => {
+            const { app } = await import('../../firebase');
+            const db = app.firestore();
+            db.settings({ timestampsInSnapshots: true });
+
+            // This is just a Demo.
+            // I'll fetch all the products and apply the filters
+            // later, just for demonstration. You should not do
+            // this in production.
+            const querySnapshot = await db.collection('products').get();
+            const products = querySnapshot.docs.map(doc => {
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+            })
+            .filter(prod => {
+                let result = true;
+
+                const categories = Object.keys(this.state.filters.categories)
+                .filter(cat => this.state.filters.categories[cat] === true);
+
+                if (categories.indexOf(prod.category) === -1) {
+                    result = false;
+                }
+
+                if (
+                    prod.price < this.state.filters.priceRange.min ||
+                    prod.price > this.state.filters.priceRange.max) {
+                        result = false;
+                }
+
+                if (this.state.filters.colors.length > 0) {
+                    if (this.state.filters.colors.map(c => c.value).indexOf(prod.color) === -1) {
+                        result = false;
+                    }
+                }
+
+                return result;
+            })
+            .sort((a, b) => {
+                let r = true;
+                switch (this.state.order) {
+                    case 'PRICE_ASC':
+                        r = a.price > b.price;
+                        break;
+
+                    case 'PRICE_DESC':
+                        r = b.price > a.price;
+                        break;
+
+                    default:
+                        break;
+                }
+
+                return r;
+            });
+
+            this.setState({ products });
+        })
+    }
+
     openFilters() {
         this.setState({ filtersOpen: true });
     }
@@ -53,7 +123,7 @@ class CatalogueView extends Component {
     }
 
     onFilterChange(filters) {
-        this.setState({ filters });
+        this.setState({ filters, filtersOpen: false }, () => this.fetchProducts());
     }
 
     onOrderChange(order) {
@@ -95,7 +165,7 @@ class CatalogueView extends Component {
                             <div className="catalogue-view__product-grid">
                                 {this.state.products.map((p, i) => {
                                     return <div key={i} className="catalogue-view__product">
-                                        {p ? null : <ProductPlaceholder/>}
+                                        {p ? <Product {...p} /> : <ProductPlaceholder/>}
                                     </div>;
                                 })}
                             </div>

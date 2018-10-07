@@ -1,8 +1,8 @@
 .product-placeholder {
     display: grid;
     width: 110px;
-    grid-gap: 8px;
-    grid-template-rows: 159px 40px 20px 20px;
+    grid-gap: 4px;
+    grid-template-rows: 159px 60px 20px 20px;
 }
 
 .product-placeholder > * {
@@ -15,7 +15,7 @@
 
 @keyframes productPlaceholderGlow {
     0% {
-        opacity: .3;
+        opacity: .5;
     }
 
     50% {
@@ -23,6 +23,13 @@
     }
 
     100% {
-        opacity: .3;
+        opacity: .5;
+    }
+}
+
+@media (min-width: 768px) {
+    .product-placeholder {
+        width: 200px;
+        grid-template-rows: 340px 60px 20px 20px;
     }
 }

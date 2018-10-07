@@ -1,0 +1,36 @@
+.product-view__share-bar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.product-view__share-bar > * {
+    margin-left: 8px;
+}
+
+.product-view__share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.product-view__share-btn__image {
+    height: 20px;
+}
+
+.product-view__return-btn {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 30px;
+    color: #000;
+    text-decoration: none;
+}
+
+.product-view__return-btn__image {
+    height: 20px;
+}
