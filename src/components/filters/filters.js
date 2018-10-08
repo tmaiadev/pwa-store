@@ -106,7 +106,7 @@ class Filters extends Component {
                 <br />
 
                 <div style={{ textAlign: 'right' }}>
-                    <Button>
+                    <Button type="submit">
                         Aplicar
                     </Button>
                 </div>

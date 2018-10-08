@@ -127,7 +127,7 @@ class CatalogueView extends Component {
     }
 
     onOrderChange(order) {
-        this.setState({ order });
+        this.setState({ order }, () => this.fetchProducts());
     }
 
     render() {
