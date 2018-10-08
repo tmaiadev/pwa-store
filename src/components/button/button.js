@@ -7,7 +7,9 @@ const Button = props => {
         <button className="button"
                 required={props.required}
                 onClick={props.onClick}
-                style={props.style}>
+                style={props.style}
+                type={props.type || 'button'}
+                disabled={props.disabled}>
             {props.icon ?
                 <img src={props.icon}
                      alt=""
@@ -22,7 +24,9 @@ Button.propTypes = {
     icon: PropTypes.string,
     required: PropTypes.bool,
     onClick: PropTypes.func,
-    style: PropTypes.object
+    style: PropTypes.object,
+    type: PropTypes.oneOf(['button', 'submit']),
+    disabled: PropTypes.bool
 }
 
 export default Button;

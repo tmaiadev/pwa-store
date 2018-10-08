@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'proptypes';
 import {
     FacebookShareButton,
     GooglePlusShareButton,
@@ -10,6 +11,7 @@ import Container from '../container/container';
 import Toolbar from '../toolbar/toolbar';
 import Row from '../row/row';
 import Select from '../select/select';
+import CommentForm from '../comment-form/comment-form';
 import RETURN_ICON from './images/icon-return.svg';
 import TOUCH_ICON from './images/icon-touch.svg';
 import CART_ICON from './images/icon-cart.svg';
@@ -39,18 +41,33 @@ class ProductView extends Component {
             details: '',
             price: 0
         },
-        tab: TAB.OPTIONS
+        tab: TAB.OPTIONS,
+        commentsComponent: null
     }
     
     async componentDidMount() {
         const { id } = this.props.match.params;
+        
+        // Setup database
         const firebase = await import('../../firebase');
         this.db = firebase.app.firestore();
         this.db.settings({ timestampsInSnapshots: true });
+
+        // Fetch product
         const doc = await this.db.collection('products').doc(id).get();
         
         if (doc.exists) {
-            this.setState({ product: doc.data() });
+            const product = {
+                id: doc.id,
+                ...doc.data()
+             }
+            this.setState({ product }, async () => {
+                // Load comment section
+                const CommentsComponent = (await import('../comments/comments')).default;
+                this.setState({
+                    commentsComponent: <CommentsComponent productId={this.state.product.id} />
+                });
+            });
         } else {
             this.props.history.push('/');
         }
@@ -199,7 +216,15 @@ class ProductView extends Component {
 
                                     <hr className="product-view__separator" />
 
-                                    <hr className="product-view__separator" />
+                                        <CommentForm user={this.props.user}
+                                                     login={this.props.login}
+                                                     productId={this.state.product.id}></CommentForm>
+
+                                    {this.state.commentsComponent ?
+                                        <hr className="product-view__separator" /> : null}
+
+                                    {this.state.commentsComponent}
+
                                 </div>
                             </div>
                         </Container>
@@ -207,6 +232,11 @@ class ProductView extends Component {
             </div>
         )
     }
+}
+
+ProductView.propTypes = {
+    login: PropTypes.func.isRequired,
+    user: PropTypes.any
 }
 
 export default ProductView;

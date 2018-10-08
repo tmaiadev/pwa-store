@@ -98,7 +98,7 @@ class App extends Component {
 							   component={AsyncComponent(() => import('../catalogue-view/catalogue-view'))} />
 						<Route path="/:id"
 							   exact
-							   component={AsyncComponent(() => import('../product-view/product-view'), { user: this.state.user })} />
+							   component={AsyncComponent(() => import('../product-view/product-view'), { user: this.state.user, login: this.openAuthModal.bind(this) })} />
 					</div>
 					<Footer />
 					<AuthModal active={this.state.authModal}

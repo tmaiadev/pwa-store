@@ -1,0 +1,36 @@
+.comment-form__title {
+    font-size: 20px;
+    margin: 0px;
+    margin-bottom: 16px;
+}
+
+.comment-form__textarea-wrapper {
+    display: block;
+    width: 100%;
+    height: 100px;
+    position: relative;
+}
+
+.comment-form__textarea {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    z-index: 1;
+}
+
+.comment-form__login-required {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #CCC;
+    z-index: 2;
+}
